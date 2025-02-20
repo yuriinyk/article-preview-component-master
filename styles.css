@@ -1,0 +1,186 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@500;700&display=swap');
+
+body {
+    font-family: 'manrope',sans-serif;
+    font-size: 13px;
+    background-color: hsl(210, 46%, 95%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+.card {
+    display: flex;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    max-width: 730px;
+        position: relative; /* Щоб `share-popup` позиціонувався відносно картки */
+      /* ОБОВ’ЯЗКОВО! Інакше popup буде обрізаний */
+            overflow: visible !important;
+        }
+    
+.card-image {
+    width: 285px; /* або інша ширина */
+    height: auto;
+    object-fit: cover;
+    object-position: left; /* зміщує зображення, щоб крісло було видимим */
+    transform: scale(1.2rem);
+}
+.card-content {
+    padding: 25px;
+    flex: 1;
+}
+h2 {
+    font-size: 1.2rem;
+    color: hsl(217, 19%, 35%);
+    font-weight: 700px;
+    margin-bottom: 15px;
+    margin-left: 20px;
+}
+ p {
+    font-size: 13px;
+    line-height: 1.5;
+    color: hsl(214, 17%, 51%);
+    margin-left: 20px;
+ }
+ .author-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50px;
+    margin-left: 20px;
+    margin-top: 10px;
+    
+ }
+ .author-info {
+    margin-left: 75px; 
+    margin-top: -45px;
+    font-size: 0.7rem;
+ }
+ .author-info h3 {
+    margin: 0;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: hsl(217, 19%, 35%);
+    right: -30px;
+ }
+ .author-info p {
+    margin: 0;
+    font-size: 0.8rem;
+    color: hsl(212, 23%, 69%);
+}
+.share-btn {
+    background: hsl(210, 46%, 95%);
+    border: none;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    position: absolute;
+    bottom: 30px; /* Піднімає кнопку вгору */
+    right: 40px; /
+}
+.share-btn:hover {
+    background: hsl(214, 17%, 51%);
+}
+    .card {
+        position: relative;
+        overflow: visible; /* Щоб pop-up не обрізався */
+    }
+    
+    .share-popup {
+        position: absolute;
+        bottom: 75px; /* Точно над кнопкою */
+        left: 91%;
+        transform: translateX(-50%);
+        background: hsl(217, 19%, 35%);
+        color: white;
+        padding: 10px;
+        border-radius: 8px;
+        display: none;
+        grid-template-columns: repeat(3, 1fr); /* Рівномірно розподіляє іконки */
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+        z-index: 100;
+        width: max-content; /* Щоб не розтягувалося */
+        white-space: nowrap; /* Уникає переносу тексту */
+    }
+    
+    /* Стилі, щоб popup з'являвся при активному класі */
+    .share-popup.active {
+        display: flex;
+    }
+    
+    /* Малюємо трикутник, який вказує вниз (на кнопку) */
+    .share-popup::after {
+        content: "";
+        position: absolute;
+        bottom: -15px;
+        left: 50%;
+        transform: translateX(-50%);
+        border-width: 8px;
+        border-style: solid;
+        border-color: hsl(217, 19%, 35%) transparent transparent transparent;
+    }
+    /* Робимо pop-up видимим */
+    .share-popup.active {
+        opacity: 1;
+    }
+/* Сховати попап на початку */
+
+@media (max-width: 600px) {
+    .card {
+        flex-direction: column; /* Фото зверху, текст знизу */
+        max-width: 90%;
+    }
+
+    .card-image {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        border-radius: 10px 10px 0 0;
+    }
+
+    .card-content {
+        padding: 20px;
+    }
+
+    .author-info {
+        margin-left: 0; /* Щоб не зміщувалось */
+        text-align: center;
+    }
+
+    .share-btn {
+        position: relative;
+        margin: 10px auto;
+        display: flex;
+        justify-content: center;
+    }
+
+    .share-popup {
+        position: fixed; /* Щоб з'являвся знизу */
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background: hsl(217, 19%, 35%);
+        color: white;
+        padding: 15px 20px;
+        border-radius: 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        z-index: 1000;
+    }
+
+    .share-popup::after {
+        display: none; /* Ховаємо трикутник */
+    }
+}
